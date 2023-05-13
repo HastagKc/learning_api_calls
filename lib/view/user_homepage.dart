@@ -60,12 +60,29 @@ class _UserHomePageState extends State<UserHomePage> {
                 itemBuilder: (context, index) {
                   final user = users[index];
                   return Card(
-                    child: Column(
-                      children: [
-                        Text(
-                          user.id.toString(),
-                        ),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            user.id.toString(),
+                          ),
+                          Text('Name: ${user.name.toString()}'),
+                          Text('Email: ${user.email.toString()}'),
+                          const Text('Address'),
+                          Text('City: ${user.address.city}'),
+                          Text('Street: ${user.address.street}'),
+                          Text('City: ${user.address.suite}'),
+                          const Text('Geo:'),
+                          Row(
+                            children: [
+                              Text('lat: ${user.address.geo.lat}'),
+                              Text(' lat: ${user.address.geo.lng}'),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
