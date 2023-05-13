@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
       final res = await dio.get('https://jsonplaceholder.typicode.com/posts');
 
       if (res.statusCode == 200) {
+        // making another list types dynamic
         List<dynamic> jsonData = res.data;
 
         for (var item in jsonData) {
@@ -57,8 +58,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Api Calling'),
       ),
-      body: isLoading == true
-          ? Center(child: CircularProgressIndicator())
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: posts.length,
               itemBuilder: (context, index) {
@@ -66,9 +67,9 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(posts[index].userId.toString()),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(posts[index].title.toString()),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Text(posts[index].body.toString()),
                   ],
                 );
