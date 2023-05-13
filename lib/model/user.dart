@@ -28,10 +28,14 @@ class User {
       name: json['name'],
       username: json['username'],
       email: json['email'],
-      address: json['address'],
+
+      // !_TypeError (type '_Map<String, dynamic>' is not a subtype of type 'Address')
+      // address: json['address'],
+
+      address: Address.fromJson(json['address']),
       phone: json['phone'],
       website: json['website'],
-      company: json['company'],
+      company: Company.fromJson(json['company']),
     );
   }
 }
@@ -57,7 +61,7 @@ class Address {
       suite: json['suite'],
       city: json['city'],
       zipcode: json['zipcode'],
-      geo: json['geo'],
+      geo: Geo.fromJson(json['geo']),
     );
   }
 }
@@ -71,7 +75,10 @@ class Geo {
   });
 
   factory Geo.fromJson(Map<String, dynamic> json) {
-    return Geo(lat: json['lat'], lng: json['lng']);
+    return Geo(
+      lat: json['lat'],
+      lng: json['lng'],
+    );
   }
 }
 
